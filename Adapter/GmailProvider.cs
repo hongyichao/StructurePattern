@@ -1,0 +1,26 @@
+﻿using Adapter.ExternalEmailClients;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Adapter
+{
+    public class GmailProvider : IEmailProvider
+    {
+        private GmailClient gmailClient;
+
+        public GmailProvider() 
+        {
+            gmailClient = new GmailClient();
+        }
+
+        public void downloadEmails()
+        {
+            gmailClient.connect();
+            gmailClient.getEmails();
+            gmailClient.disconnect();
+        }
+    }
+}
