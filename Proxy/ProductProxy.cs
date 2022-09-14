@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace Proxy
 {
-    public class ProductProxy
+    public class ProductProxy: Product
     {
         DbContext dbContext;
-        Product product;
-        public ProductProxy(Product product, DbContext dbContext)
+
+        public ProductProxy(int id, DbContext dbContext) : base(id)
         {
             this.dbContext = dbContext;
-            this.product = product;
         }
 
-        public void setName(string newName) 
+        public override void setName(string newName) 
         {
-            product.setName(newName);
-            dbContext.markAsChanged(product);            
+            base.setName(newName);
+            dbContext.markAsChanged(this);            
         }
     }
 }

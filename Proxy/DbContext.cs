@@ -19,7 +19,7 @@ namespace Proxy
             // Simulate reading a product object from a database.
             var product = new Product(id);
             product.setName("Product 1");
-            var proxy = new ProductProxy(product, this);
+            var proxy = new ProductProxy(id, this);
 
             return proxy;
         }
